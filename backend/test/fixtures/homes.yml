@@ -1,0 +1,27 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user_id: 1
+  description: MyText
+  location: MyString
+  daily_price: 1.5
+  bedroom: 1
+  bathroom: 1
+  internet: false
+  central_air: false
+  heating: false
+  tv: false
+  pets_allowed: false
+
+two:
+  user_id: 1
+  description: MyText
+  location: MyString
+  daily_price: 1.5
+  bedroom: 1
+  bathroom: 1
+  internet: false
+  central_air: false
+  heating: false
+  tv: false
+  pets_allowed: false
