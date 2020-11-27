@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
-      resources :homes, :transactions, :reservations
-      resources :users
+      resources :homes
+      get '/homes', to: 'homes#index'
+      resources :transactions
+      resources :reservations
+      resources :users, only: [:create]
       post '/login', to: 'auth#login'
       post '/register', to: 'users#create'
       get '/profile', to: 'users#profile'

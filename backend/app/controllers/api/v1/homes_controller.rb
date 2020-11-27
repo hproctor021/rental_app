@@ -1,14 +1,22 @@
-class HomesController < ApplicationController
+class Api::V1::HomesController < ApplicationController
+
+    skip_before_action :authorized, only: [:show, :index]
 
     def index
-        @homes = Home.all
-        render json: @homes
+        homes = Home.all
+        render json: homes, include:{photos:{only: [:image, :image_name]}}
     end
 
     def create
-        @home = Home.create(home_params)
-        render json: @home
+        home = Home.create(home_params)
+        render json: home
     end
+
+    def show
+        home = Home.find(params[:id])
+        render json: home, include:{photos:{only: [:image, :image_name]}}
+    end
+
 
     private
 

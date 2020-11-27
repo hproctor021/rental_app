@@ -1,4 +1,4 @@
-class UsersController < ApplicationController
+class Api::V1::UsersController < ApplicationController
 
     #  Makes it so the authorized method runs first, in this case auto_login
     before_action :authorized, only: [:auto_login]
