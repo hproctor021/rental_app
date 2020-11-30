@@ -1,15 +1,29 @@
 class Api::V1::UsersController < ApplicationController
-
+    skip_before_action :authorized, only: [:create, :index, :show]
     #  Makes it so the authorized method runs first, in this case auto_login
     before_action :authorized, only: [:auto_login]
 
+    def show
+        user = User.find(params[:id])
+        render json: user
+    end
+
+    def update
+        user = User.find(params[:id])
+        user.update
+        render json: user
+    end
+    
+    
     # REGISTER user instance is created. If valid, payload object is created with
     # user instance’s ID and passed into the encode_token --> POST made to /users
     def create
-        @user = User.create(user_params)
-        if @user.valid?
-            token = encode_token({user_id: @user.id})
-            render json: {user: @user, token: token}
+        user = User.create(user_params)
+        if user.valid?
+            payload = {user_id: user.id}
+            token = encode_token(payload)
+            puts token
+            render json: {user: user, jwt: token}
         else
             render json: {error: "Invalid username or password"}
         end
@@ -19,11 +33,12 @@ class Api::V1::UsersController < ApplicationController
     # check for existing user in the params passed, bcrypt compares 
     #the password passed to the password stored to that user instance
     def login
-        @user = User.find_by(username: params[:username])
-        # if both vv pass, then a token is created by JWT & JSON object is rendered with key value pair, user & token
-        if @user && @user.authenticate(params[:password])
-            token = encode_token({user_id: @user.id})
-            render json: {user: @user, token: token}
+        user = User.find_by(username: params[:username])
+        # if both (below) pass, then a token is created by JWT & JSON object is rendered with key value pair, user & token
+        if user && user.authenticate(params[:password])
+            payload = {user_id: user.id}
+            token = encode_token(payload)
+            render json: {user: user, jwt: token, success: "Welcome back, #{user.username}"}
         else
             render json: {error: "Invalid username or password"}
         end
@@ -32,7 +47,10 @@ class Api::V1::UsersController < ApplicationController
     # auto_login gets the variable @user from the logged_in_user method in 
     # application_controller, that runs after the authorized method
     def auto_login
-        render json: @user
+        if session_user
+            render json: user
+        else
+            render json: {error: "Not Logged In"}
     end
 
     private

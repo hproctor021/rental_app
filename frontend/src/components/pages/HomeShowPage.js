@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux'
 
 const HomeShowPage = ({ match }) => {
 
-    // const dispatch = useDispatch()
-    // const hDetails = useSelector(state => state.homeDetails)
+    const dispatch = useDispatch()
+    const hDetails = useSelector(state => state.homeDetails)
     // const { loading, error, home} = hDetails
     // useEffect(() => {
     //     dispatch(listOneHome(match.params.id))
@@ -16,15 +16,13 @@ const HomeShowPage = ({ match }) => {
     return (
         <>
 
-            {/* {
-            ? (action)
-            : null */}
+            {/* { loading
 
-                {/* <Carousel>
+            ?   <Carousel>
                     <Carousel.Item interval={5000}>
                         <img
                         className="d-block w-100"
-                        src={null}
+                        src={hDetails.photos.map(photo => console.log(photo.image))}
                         alt="home photos"
                         />
                         <Carousel.Caption>
@@ -32,8 +30,10 @@ const HomeShowPage = ({ match }) => {
                         <p>{null}</p>
                         </Carousel.Caption>
                     </Carousel.Item>
-                </Carousel> */}
-            {/* } */}
+                </Carousel>
+
+            : null
+            } */}
         </>
     )
 }

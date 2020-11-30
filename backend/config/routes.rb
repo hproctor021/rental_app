@@ -6,10 +6,12 @@ Rails.application.routes.draw do
       resources :transactions
       resources :reservations
       resources :users, only: [:create]
-      post '/login', to: 'auth#login'
+      post '/login', to: 'auth#create'
       post '/register', to: 'users#create'
-      get '/profile', to: 'users#profile'
+      get '/auto_login', to: 'users#auto_login'
+      get '/users/:id/profile', to: 'users#show'
       get '/users', to: 'users#index'
+      patch '/users/:id/edit', to: 'users#update'
     end
   end
 end

@@ -1,9 +1,11 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Form, Button } from 'react-bootstrap'
+import { Form, Button, Card, Container } from 'react-bootstrap'
+import { Redirect, useHistory } from 'react-router-dom'
 
 const Login = () => {
 
+    let history = useHistory()
     const dispatch = useDispatch()
     const usernameInput = useSelector(state=> state.usernameInput)
     const passwordInput = useSelector(state => state.passwordInput)
@@ -22,34 +24,72 @@ const Login = () => {
         })
     }
 
-    const handleClick = () => {
-        dispatch({
-            type: 'SET_USER',
-            user: {
+
+    
+    const handleClick = (e) => {
+        e.preventDefault()
+        // e.target.reset()
+
+        fetch('http://localhost:3000/api/v1/login', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
                 username: usernameInput,
                 password: passwordInput
-            }
-            
+            })
+        })
+        .then(res => res.json())
+        .then(data => {
+            localStorage.setItem("token", data.jwt)
+            console.log(data)
+            dispatch({
+                type: 'SET_USER',
+                user: {
+                    username: usernameInput,
+                    password: passwordInput,
+                    loggedIn: true
+                }
+            })
+            history.push('/')
         })
     }
 
+
     return(
         <>
-            <h3>Login Page</h3>
-            <Form>
-                <Form.Group >
-                    <Form.Label>Username</Form.Label>
-                    <Form.Control type="username" placeholder="Enter Username" onChange={(e) =>handleUsernameChange(e)}/>
-                </Form.Group>
+        <main className='py-4'>
+        <Container>
+            
+            <Card style={{width:'700px', border:'white'}} className='text-center' >
+                <Card.Body >
+                    <Card.Text className='navHome'>
+                        Welcome Back!
+                    </Card.Text>
+                    <Card.Title>
+                        <h3 className='navHome'>Login to Get Started</h3>
+                    </Card.Title>
+                    <br/>
+                    <Form >
+                        <Form.Group >
+                            <Form.Control type="username" placeholder="Enter Username" onChange={(e) =>handleUsernameChange(e)}/>
+                        </Form.Group>
 
-                <Form.Group>
-                    <Form.Label>Password</Form.Label>
-                    <Form.Control type="password" placeholder="Password" onChange={(e) =>handlePasswordChange(e)}/>
-                </Form.Group>
-                <Button variant="primary" type="submit" onClick={handleClick}>
-                    Submit
-                </Button>
-            </Form>
+                        <Form.Group>
+                            <Form.Control type="password" placeholder="Password" onChange={(e) =>handlePasswordChange(e)}/>
+                        </Form.Group>
+                        <br /><br />
+                        
+                        <Button variant="primary" onClick={handleClick}>
+                            Login
+                        </Button>
+                    </Form>
+                </Card.Body>
+            </Card>
+        </Container>
+        </main>
         </>
     )
 }

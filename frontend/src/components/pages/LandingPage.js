@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Row, Col } from 'react-bootstrap'
+import { Row, Col, Container } from 'react-bootstrap'
 import HomeCard from '../HomeCard'
+import FeaturesCards from '../FeaturesCards'
 
 
 const LandingPage = () =>{
@@ -23,7 +24,17 @@ const LandingPage = () =>{
 
         return (
             <>
-                <h1>LandingPage</h1>
+            <main className='py-4'>
+                <Container>
+                
+                {lHomes.map(home => (
+                <FeaturesCards home={home}/>
+                ))}
+                <br /><br />
+                <Container>
+                    <h3 className='navHome' style={{textAlign: "center"}}>START PLANNING YOUR NEXT ADVENTURE</h3>
+                </Container>
+                <br /><br />
                 <Row>
                 {lHomes.map(home => (
                     <Col key={home._id} sm={12} md={12} lg={10} xl={10} >
@@ -31,6 +42,9 @@ const LandingPage = () =>{
                     </Col>
                 ))}
                 </Row>
+                
+                </Container>
+            </main>
             </>
         )
     
