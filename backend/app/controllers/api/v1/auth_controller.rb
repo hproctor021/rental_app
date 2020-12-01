@@ -1,9 +1,9 @@
 class Api::V1::AuthController < ApplicationController
-
+    skip_before_action :authorized
     def create
-        user = User.find_by(username: params[:user][:username])
-        if user && user_authenticate(params[:user][:password])
-            render json: {username: user.username, token: JWT.encode{{user_id: user.id},"hush"}}
+        user = User.find_by(username: params[:username])
+        if user && user.authenticate(params[:password])
+            render json: {username: user.username, token: JWT.encode({user_id: user.id},"hush")}
         else
             render json: {error: "Invalid username or password"}
         end
@@ -46,11 +46,10 @@ class Api::V1::AuthController < ApplicationController
     # def require_login
     #     render json: {message: 'Please Login'}, status: :unauthorized unless logged_in?
     # end
-    private
+    # private
 
-    def user_login_params
-        params,.require(:user).permit(:username, :password)
-    end
-    
+    # def user_login_params
+    #     params.require(:user).permit(:username, :password)
+    # end
 
 end

@@ -29,7 +29,7 @@ const Login = () => {
     const handleClick = (e) => {
         e.preventDefault()
         // e.target.reset()
-
+        
         fetch('http://localhost:3000/api/v1/login', {
             method: 'POST',
             headers: {
@@ -43,15 +43,20 @@ const Login = () => {
         })
         .then(res => res.json())
         .then(data => {
-            localStorage.setItem("token", data.jwt)
             console.log(data)
+            localStorage.token = data.token
             dispatch({
                 type: 'SET_USER',
                 user: {
                     username: usernameInput,
-                    password: passwordInput,
+                    // password: passwordInput,
                     loggedIn: true
                 }
+
+            })
+            dispatch({
+                type: 'SET_PASSWORD_INPUT',
+                value: ''
             })
             history.push('/')
         })

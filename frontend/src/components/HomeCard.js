@@ -2,6 +2,7 @@ import React from 'react'
 import { Card, Image } from 'react-bootstrap'
 import HomeShowPage from './pages/HomeShowPage'
 import { Link } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
 
 
 function HomeCard ({ home }) {

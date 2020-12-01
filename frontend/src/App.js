@@ -13,6 +13,7 @@ import store from './store/index'
 import UserProfile from './components/UserProfile';
 import UserUpdateForm from './components/UserUpdateForm'
 import NewHomeForm from './components/NewHomeForm'
+import ContactForm from './components/ContactForm'
 
 
 
@@ -51,7 +52,7 @@ const App = () => {
 
                 <Route
                 exact
-                path='/api/v1/users/:id/profile'
+                path='/api/v1/users/profile'
                 component={UserProfile}
                 />
 
@@ -65,6 +66,12 @@ const App = () => {
                 exact
                 path='/user/list_home'
                 component={NewHomeForm}
+                />
+
+                <Route
+                exact
+                path='/contact' 
+                component={ContactForm}
                 />
 
             </Container>

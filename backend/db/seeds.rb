@@ -14,14 +14,14 @@ Transaction.delete_all
 
 
 users = [
-    {full_name: 'Kamala Harris', image: 'https://www.poynter.org/wp-content/uploads/2004/02/AP_20224740170220-2048x1366.jpg', is_owner: true, email: 'leVP@example.com', username: 'Ms.VP2020', password_digest: '123'},
-    {full_name: 'Haley Proctor', image: 'https://media-exp1.licdn.com/dms/image/C5603AQEiscRAwbsAOA/profile-displayphoto-shrink_400_400/0?e=1611187200&v=beta&t=iS1UqANU8O4CwMxMkZzWTwoJZIeUeJLcw4NK9c2LNF8', is_owner: true, email: 'hproctor@example.com', username: 'HProctor', password_digest: '123'},
-    {full_name: 'Tiff Anderson', image: 'https://www.slrlounge.com/wp-content/uploads/2017/07/Slide19.jpg', is_owner: true, email: 'TT@example.com', username: 'T.Anderson', password_digest: '123'},
-    {full_name: 'Maria Jones', image: 'https://expertphotography.com/wp-content/uploads/2019/12/headshot-1.jpg', is_owner: true, email: 'maryJ@example.com', username: 'MaryJ', password_digest: '123'},
-    {full_name: 'Joseph Gonzalez', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60', is_owner: true, email: 'Jmoney@example.com', username: 'Jo.Go', password_digest: '123'},
-    {full_name: 'Mike Tyson', image: 'https://i.pinimg.com/originals/e4/22/18/e42218aca7b2ac42faeeae4de6322bc2.jpg', is_owner: true, email: 'TBMOTP@example.com', username: 'MikeThaison', password_digest: '123'},
-    {full_name: 'Elon Muskard', image: 'https://observer.com/wp-content/uploads/sites/2/2020/01/elon-musk-twitter-advice.jpg?resize=970,675', is_owner: false, email: 'EMusky@example.com', username: 'El.musk', password_digest: '123'},
-    {full_name: 'Mark Zuck', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/MarkZuckerberg-crop.jpg/210px-MarkZuckerberg-crop.jpg', is_owner: false, email: 'MZuck@example.com', username: 'Your First Friend', password_digest: '123'}
+    {full_name: 'Kamala Harris', image: 'https://www.poynter.org/wp-content/uploads/2004/02/AP_20224740170220-2048x1366.jpg', is_owner: true, email: 'leVP@example.com', username: 'Ms.VP2020', password: '123'},
+    {full_name: 'Haley Proctor', image: 'https://media-exp1.licdn.com/dms/image/C5603AQEiscRAwbsAOA/profile-displayphoto-shrink_400_400/0?e=1611187200&v=beta&t=iS1UqANU8O4CwMxMkZzWTwoJZIeUeJLcw4NK9c2LNF8', is_owner: true, email: 'hproctor@example.com', username: 'HProctor', password: '123'},
+    {full_name: 'Tiff Anderson', image: 'https://www.slrlounge.com/wp-content/uploads/2017/07/Slide19.jpg', is_owner: true, email: 'TT@example.com', username: 'T.Anderson', password: '123'},
+    {full_name: 'Maria Jones', image: 'https://expertphotography.com/wp-content/uploads/2019/12/headshot-1.jpg', is_owner: true, email: 'maryJ@example.com', username: 'MaryJ', password: '123'},
+    {full_name: 'Joseph Gonzalez', image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=700&q=60', is_owner: true, email: 'Jmoney@example.com', username: 'Jo.Go', password: '123'},
+    {full_name: 'Mike Tyson', image: 'https://i.pinimg.com/originals/e4/22/18/e42218aca7b2ac42faeeae4de6322bc2.jpg', is_owner: true, email: 'TBMOTP@example.com', username: 'MikeThaison', password: '123'},
+    {full_name: 'Elon Muskard', image: 'https://observer.com/wp-content/uploads/sites/2/2020/01/elon-musk-twitter-advice.jpg?resize=970,675', is_owner: false, email: 'EMusky@example.com', username: 'El.musk', password: '123'},
+    {full_name: 'Mark Zuck', image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/fc/MarkZuckerberg-crop.jpg/210px-MarkZuckerberg-crop.jpg', is_owner: false, email: 'MZuck@example.com', username: 'Your First Friend', password: '123'}
 ]
 
 users.each {| user | User.create(user)}

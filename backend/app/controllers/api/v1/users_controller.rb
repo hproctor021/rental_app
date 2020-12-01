@@ -51,6 +51,7 @@ class Api::V1::UsersController < ApplicationController
             render json: user
         else
             render json: {error: "Not Logged In"}
+        end
     end
 
     private

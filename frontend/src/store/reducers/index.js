@@ -16,7 +16,8 @@ export const initialState = {
     bedroomInput: 0,
     bathroomInput: 0,
     imageInput: '',
-    home: {}
+    home: {},
+    loading: true
 }
 
 
@@ -37,7 +38,8 @@ export const reducer = (state, action) => {
         case 'SET_USER':
             return {
                 ...state,
-                user: action.user
+                user: action.user,
+                loggedIn: true
             }
         break;
         case 'SET_NAME_INPUT':
@@ -64,7 +66,6 @@ export const reducer = (state, action) => {
                 homes: action.homes
             }
         break;
-
         case 'SET_DESCRIPTION_INPUT':
             return {
                 ...state,
@@ -98,7 +99,8 @@ export const reducer = (state, action) => {
         case 'SET_HOME':
             return {
                 ...state,
-                home: action.home
+                home: action.home,
+                loading: false
             }
         break;
     }

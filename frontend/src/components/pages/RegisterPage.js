@@ -49,19 +49,39 @@ const Register = () => {
         })
     }
 
-    const handleClick = () => {
-        dispatch({
-            type: 'SET_USER',
-            user: {
-                name: nameInput,
-                image: imageInput,
-                email: emailInput,
+    const handleClick = (e) => {
+        e.preventDefault()
+
+        fetch('http://localhost:3000/api/v1/register', {
+            method: 'POST',
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
                 username: usernameInput,
                 password: passwordInput
-            }    
+            })
         })
-        history.push('/')
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            localStorage.token = data.token
+            dispatch({
+                type: 'SET_USER',
+                user: {
+                    name: nameInput,
+                    image: imageInput,
+                    email: emailInput,
+                    username: usernameInput,
+                    password: passwordInput,
+                    loggedIn: true
+                }    
+            })
+            history.push('/')
+        })
     }
+
 
     return(
         <Container className='text-center'>

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :homes
       get '/homes', to: 'homes#index'
+      resources :photos
       resources :transactions
       resources :reservations
       resources :users, only: [:create]

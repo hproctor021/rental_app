@@ -19,7 +19,7 @@ const LandingPage = () =>{
                 homes: homes
             })
         }
-    )})
+    )}, [dispatch])
     
 
         return (

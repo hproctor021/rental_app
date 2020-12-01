@@ -1,39 +1,89 @@
 import React, { useEffect} from 'react'
-import { Carousel } from 'react-bootstrap'
+import { Carousel, Image, Col, Row, ListGroup, Container, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
+import Loader from '../Loader'
 
 const HomeShowPage = ({ match }) => {
 
     const dispatch = useDispatch()
-    const hDetails = useSelector(state => state.homeDetails)
-    // const { loading, error, home} = hDetails
-    // useEffect(() => {
-    //     dispatch(listOneHome(match.params.id))
-    // },
-    // [dispatch, match])
+    const home = useSelector(state => state.home)
+    const { loading } = home
 
-    // console.log(home.photos)
+    useEffect(() => {
+        fetch(`http://localhost:3000/api/v1/homes/${match.params.id}`)
+        .then(res => res.json())
+        .then(home => {
+            dispatch({
+                type: 'SET_HOME',
+                home: home,
+                loading: false
+            })
+        }
+    )}, [dispatch, match])
+
+    function renderCarousel() {
+        return (
+            <Carousel>
+                    {home.photos.map(photo => (
+                        <Carousel.Item interval={4000}>
+                            <Image
+                            className="d-block w-100"
+                            src={photo.image}
+                            alt="home photos"
+                            />
+                            <Carousel.Caption>
+                            <p>{photo.image_name}</p>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                    ))}
+                </Carousel>
+        )
+    }
+
+
     return (
         <>
-
-            {/* { loading
-
-            ?   <Carousel>
-                    <Carousel.Item interval={5000}>
-                        <img
-                        className="d-block w-100"
-                        src={hDetails.photos.map(photo => console.log(photo.image))}
-                        alt="home photos"
-                        />
-                        <Carousel.Caption>
-                        
-                        <p>{null}</p>
-                        </Carousel.Caption>
-                    </Carousel.Item>
-                </Carousel>
-
-            : null
-            } */}
+                <Container className='text-center'>
+                    <Row>
+                        <Col>
+                            <h3 className='navHome'>{home.location}</h3>
+                        </Col>
+                    </Row>
+                </Container>
+                {home.photos ? renderCarousel() : null}
+                <br /><br />
+                <ListGroup variant="flush">
+                    <ListGroup.Item as='h4' className='navHome'>{home.description}</ListGroup.Item>
+                    <ListGroup.Item>Your Amenities Include:</ListGroup.Item>
+                    <ListGroup.Item>Bedrooms: {home.bedroom}</ListGroup.Item>
+                    <ListGroup.Item>Bathrooms: {home.bathroom}</ListGroup.Item>
+                    <ListGroup.Item>Accommodates: {home.accommodates} guests</ListGroup.Item>
+                    {home.pets_allowed
+                    ? <ListGroup.Item>Pet Friendly: yes</ListGroup.Item>
+                    : <ListGroup.Item>Pet Friendly: no</ListGroup.Item>
+                    }
+                    {home.internet
+                    ? <ListGroup.Item>Wifi: yes</ListGroup.Item>
+                    : <ListGroup.Item>Wifi: no</ListGroup.Item>
+                    }
+                    {home.central_air
+                    ? <ListGroup.Item>A/C: yes</ListGroup.Item>
+                    : <ListGroup.Item>A/C: no</ListGroup.Item>
+                    }
+                    {home.heating
+                    ? <ListGroup.Item>Heating: yes</ListGroup.Item>
+                    : <ListGroup.Item>Heating: no</ListGroup.Item>
+                    }
+                    {home.tv
+                    ? <ListGroup.Item>TV: yes</ListGroup.Item>
+                    : <ListGroup.Item>TV: no</ListGroup.Item>
+                    }
+                    <ListGroup.Item>${home.daily_price} / night</ListGroup.Item>
+                </ListGroup>
+                <br />
+                <Container className='text-center'>
+                    <Button>Reserve Home</Button>
+                </Container>
         </>
     )
 }
