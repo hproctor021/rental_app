@@ -13,6 +13,12 @@ class Api::V1::UsersController < ApplicationController
         user.update
         render json: user
     end
+
+    def get_user
+        user = self.current_user
+        # byebug
+        render json: user
+    end
     
     
     # REGISTER user instance is created. If valid, payload object is created with

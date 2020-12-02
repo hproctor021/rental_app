@@ -47,25 +47,20 @@ const Login = () => {
             localStorage.token = data.token
             dispatch({
                 type: 'SET_USER',
-                user: {
-                    username: usernameInput,
-                    // password: passwordInput,
-                    loggedIn: true
-                }
-
+                user: data.user
             })
             dispatch({
                 type: 'SET_PASSWORD_INPUT',
                 value: ''
             })
-            history.push('/')
+            history.push('/users/profile')
         })
     }
 
 
     return(
-        <>
-        <main className='py-4'>
+        <> 
+        <main className='py-4' style={{padding: '100px'}}>
         <Container>
             
             <Card style={{width:'700px', border:'white'}} className='text-center' >

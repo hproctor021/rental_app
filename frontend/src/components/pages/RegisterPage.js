@@ -74,9 +74,13 @@ const Register = () => {
                     image: imageInput,
                     email: emailInput,
                     username: usernameInput,
-                    password: passwordInput,
+                    // password: passwordInput,
                     loggedIn: true
                 }    
+            })
+            dispatch({
+                type: 'SET_PASSWORD_INPUT',
+                value: ''
             })
             history.push('/')
         })
@@ -84,7 +88,7 @@ const Register = () => {
 
 
     return(
-        <Container className='text-center'>
+        <Container className='text-center' style={{padding: '100px'}}>
             <br />
             <h3 className='navHome'>Register</h3>
             <div className='navHome'>To Start Planning Your Next Adventure</div>

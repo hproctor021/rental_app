@@ -38,10 +38,26 @@
 }
 
 main {
-  min-height: 80vh;
+  min-height: 100vh;
   justify-content: center;
 }
 
 .navHome {
   font-family: 'Raleway', sans-serif;
+}
+
+.banner {
+  background: url('https://www.boutique-homes.com/wp-content/uploads/2020/08/villa_for_rent_portugal_029-3.jpg')
+    center center;
+  height: 40vh;
+  position: relative;
+}
+
+.searchButton {
+  background-color: #78c2ad;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  border: none;
+  border-radius: 6%;
 }

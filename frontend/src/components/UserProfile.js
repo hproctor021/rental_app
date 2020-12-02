@@ -4,11 +4,11 @@ import { Form, Button, Card, Col, Image, Container, Row } from 'react-bootstrap'
 
 const UserProfile = () => {
 
-    
+    const user = useSelector(state=> state.user)
 
     return(
         <>
-            <Container>
+            <Container style={{padding: '100px'}}>
                 <Row>
                     <Col sm={3}>
                         <Card style={{border:'white'}}>
@@ -17,7 +17,7 @@ const UserProfile = () => {
                                     <Image src="https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_1280.png" roundedCircle fluid/>
                                 </Card.Title>
                                 <Card.Text>
-                                    <Button href='/api/v1/users/:id/edit'>Edit Account</Button>
+                                    <Button href='/api/v1/users/edit'>Edit Account</Button>
                                 </Card.Text>
                                 <Card.Text>
                                     <Button href='/user/list_home'>List a Home</Button>

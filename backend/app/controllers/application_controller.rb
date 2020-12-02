@@ -24,17 +24,19 @@ class ApplicationController < ActionController::API
     end
   end
 
-  def logged_in_user
+  def current_user
     # Checks that the decoded_token method has provided us the authorized token
     if decoded_token
       user_id = decoded_token[0]['user_id']
       @user = User.find_by(id: user_id)
+      # byebug
+      return @user 
     end
   end
 
 
   def logged_in?
-    !!logged_in_user
+    !!current_user
     # Checks to see that the user is logged in with logged_in_user
   end
 

@@ -1,10 +1,14 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Form, Button, Card, Col, Image, Container, Row } from 'react-bootstrap'
+import { useHistory } from 'react-router-dom'
+
+
 
 const NewHomeForm = () => {
 
     const dispatch = useDispatch()
+    const history = useHistory()
     const descriptionInput = useSelector(state => state.descriptionInput)
     const locationInput = useSelector(state => state.locationInput)
     const daily_priceInput = useSelector(state => state.daily_priceInput)
@@ -66,13 +70,13 @@ const NewHomeForm = () => {
                 bathroom: bathroomInput,
                 image: imageInput
             }
-            
         })
+        history.push(`/api/v1/users/:id/profile`)
     }
 
     return (
 
-        <Container className='text-center'>
+        <Container className='text-center' style={{padding: '100px'}}>
             <br /><br />
             <h3 className='navHome'>Tell Us About Your Home</h3> <br />
                 <br />

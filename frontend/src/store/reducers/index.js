@@ -3,7 +3,7 @@
 export const initialState = {
     usernameInput: '',
     passwordInput: '',
-    user: {},
+    user: null,
     loggedIn: false,
     emailInput: '',
     imageInput: '',
@@ -38,8 +38,7 @@ export const reducer = (state, action) => {
         case 'SET_USER':
             return {
                 ...state,
-                user: action.user,
-                loggedIn: true
+                user: action.user
             }
         break;
         case 'SET_NAME_INPUT':

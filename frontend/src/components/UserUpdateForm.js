@@ -1,10 +1,13 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Form, Button, Card, Col, Image, Container, Row } from 'react-bootstrap'
+import { useHistory } from 'react-router-dom'
+
 
 const UserUpdateForm = () => {
 
     const dispatch = useDispatch()
+    const history = useHistory()
     const nameInput = useSelector(state => state.nameInput)
     const imageInput = useSelector(state => state.imageInput)
     const emailInput = useSelector(state => state.emailInput)
@@ -57,14 +60,14 @@ const UserUpdateForm = () => {
                 username: usernameInput,
                 password: passwordInput
             }
-            
         })
+        history.push(`/api/v1/users/:id/profile`)
     }
 
     return (
 
         <>
-
+            <div style={{padding: '100px', textAlign: 'center'}}>
             <h3 className='navHome'>Update Account Information</h3> <br />
 
                     <Form>
@@ -96,11 +99,12 @@ const UserUpdateForm = () => {
                             {/* <Form.Label>Password</Form.Label> */}
                             <Form.Control type="password" placeholder="Password Confirmation" onChange={(e) =>handlePasswordChange(e)}/>
                         </Form.Group>
-
+                        <br />
                         <Button variant="primary" type="submit" onClick={handleClick}>
                             Save Changes
                         </Button>
                     </Form>
+                </div>
 
         </>
     )

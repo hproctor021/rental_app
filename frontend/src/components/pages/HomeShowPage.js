@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react'
+import React, { useEffect } from 'react'
 import { Carousel, Image, Col, Row, ListGroup, Container, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
 import Loader from '../Loader'
@@ -23,6 +23,7 @@ const HomeShowPage = ({ match }) => {
 
     function renderCarousel() {
         return (
+            
             <Carousel>
                     {home.photos.map(photo => (
                         <Carousel.Item interval={4000}>
@@ -37,12 +38,14 @@ const HomeShowPage = ({ match }) => {
                         </Carousel.Item>
                     ))}
                 </Carousel>
+            
         )
     }
 
 
     return (
         <>
+            <div style={{padding: '80px'}}>
                 <Container className='text-center'>
                     <Row>
                         <Col>
@@ -84,6 +87,7 @@ const HomeShowPage = ({ match }) => {
                 <Container className='text-center'>
                     <Button>Reserve Home</Button>
                 </Container>
+            </div>
         </>
     )
 }

@@ -6,7 +6,7 @@ const ContactForm = () => {
 
     return (
 
-        <Container className='text-center'>
+        <Container className='text-center' style={{padding: '100px'}}>
             <br /><br />
             <h3 className='navHome'>What's On Your Mind? </h3>
             <small>Someone Will Get Back to You Within Two Business Days</small>
