@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { Row, Col, Container } from 'react-bootstrap'
 import HomeCard from '../HomeCard'
 import BannerPic from '../BannerPic'
+import FeaturesCards from '../FeaturesCards'
 
 
 const LandingPage = () =>{
@@ -27,9 +28,11 @@ const LandingPage = () =>{
                  <BannerPic />
                 <main className='py-4'>
                     <br /><br />
-                    <Container>
-                        <h3 className='navHome' style={{textAlign: "center"}}>START PLANNING YOUR NEXT ADVENTURE</h3>
+                    <Container className='home-title'>
+                        <h3  style={{textAlign: "center"}}>START PLANNING YOUR NEXT ADVENTURE</h3>
                     </Container>
+                    <br /><br />
+                    <FeaturesCards />
                     <br /><br />
                     <Row>
                     {lHomes.map(home => (

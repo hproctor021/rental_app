@@ -67,40 +67,42 @@ const HomeShowPage = ({ match }) => {
                 <br /><br />
                 <ListGroup variant="flush">
                     <ListGroup.Item as='h4' className='navHome'>{home.description}</ListGroup.Item>
-                    <ListGroup.Item>Your Amenities Include:</ListGroup.Item>
-                    <ListGroup.Item>Bedrooms: {home.bedroom}</ListGroup.Item>
-                    <ListGroup.Item>Bathrooms: {home.bathroom}</ListGroup.Item>
-                    <ListGroup.Item>Accommodates: {home.accommodates} guests</ListGroup.Item>
+                    <ListGroup.Item><i class="fas fa-home"></i>   Your Amenities Include:</ListGroup.Item>
+                    <ListGroup.Item><i class="fas fa-bed"></i>   Bedrooms: {home.bedroom}</ListGroup.Item>
+                    <ListGroup.Item><i class="fas fa-bath"></i>   Bathrooms: {home.bathroom}</ListGroup.Item>
+                    <ListGroup.Item><i class="fas fa-user-friends"></i>   Accommodates: {home.accommodates} guests</ListGroup.Item>
                     {home.pets_allowed
-                    ? <ListGroup.Item>Pet Friendly : yes</ListGroup.Item>
-                    : <ListGroup.Item>Pet Friendly : no</ListGroup.Item>
+                    ? <ListGroup.Item><i class="fas fa-dog"></i>   Pet Friendly : yes</ListGroup.Item>
+                    : <ListGroup.Item><i class="fas fa-dog"></i>   Pet Friendly : no</ListGroup.Item>
                     }
                     {home.internet
-                    ? <ListGroup.Item>Wifi : yes</ListGroup.Item>
-                    : <ListGroup.Item>Wifi : no</ListGroup.Item>
+                    ? <ListGroup.Item><i class="fas fa-wifi"></i>   Wifi : yes</ListGroup.Item>
+                    : <ListGroup.Item><i class="fas fa-wifi"></i>   Wifi : no</ListGroup.Item>
                     }
                     {home.central_air
-                    ? <ListGroup.Item>A/C : yes</ListGroup.Item>
-                    : <ListGroup.Item>A/C : no</ListGroup.Item>
+                    ? <ListGroup.Item><i class="fas fa-wind"></i>   A/C : yes</ListGroup.Item>
+                    : <ListGroup.Item><i class="fas fa-wind"></i>   A/C : no</ListGroup.Item>
                     }
                     {home.heating
-                    ? <ListGroup.Item>Heating : yes</ListGroup.Item>
-                    : <ListGroup.Item>Heating : no</ListGroup.Item>
+                    ? <ListGroup.Item><i class="fas fa-fire"></i>   Heating : yes</ListGroup.Item>
+                    : <ListGroup.Item><i class="fas fa-fire"></i>   Heating : no</ListGroup.Item>
                     }
                     {home.tv
-                    ? <ListGroup.Item>TV : yes</ListGroup.Item>
-                    : <ListGroup.Item>TV : no</ListGroup.Item>
+                    ? <ListGroup.Item><i class="fas fa-tv"></i>   TV : yes</ListGroup.Item>
+                    : <ListGroup.Item><i class="fas fa-tv"></i>   TV : no</ListGroup.Item>
                     }
-                    <ListGroup.Item>${home.daily_price} / night</ListGroup.Item>
+                    <ListGroup.Item><i class="fas fa-dollar-sign"></i>  {home.daily_price} / night</ListGroup.Item>
                 </ListGroup>
                 <br />
                 <Container className='text-center' onClick={handleClick}>
-                    <Button>Reserve Home</Button>
+                    <Button>Make A Reservation</Button>
                 </Container>
             </div>
-            {display
-            ? <Rezi />
-            : null}
+            <Container>
+                { display
+                ? <Rezi />
+                : null }
+            </Container>
         </>
     )
 }

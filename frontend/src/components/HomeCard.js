@@ -14,8 +14,12 @@ function HomeCard ({ home }) {
                 <Link to={`/api/v1/homes/${home.id}`}>
                     <Card.Title as='h4'>{home.location}</Card.Title>
                 </Link>
-                <Image src={home.photos[0].image} fluid />
+
+                <Link to={`/api/v1/homes/${home.id}`}>
+                    <Image src={home.photos[0].image} className='homePhoto' fluid />
+                </Link>
                 <br /><br />
+
                 <Card.Text>{home.description}</Card.Text>
                 <Card.Text className='text-center' as='h3'>${home.daily_price}</Card.Text><h6 className='text-center'>/night</h6>
                 <br />

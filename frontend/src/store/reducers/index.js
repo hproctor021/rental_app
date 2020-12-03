@@ -18,7 +18,10 @@ export const initialState = {
     imageInput: '',
     home: {},
     loading: true,
-    display: false
+    display: false,
+
+    startDate: null,
+    endDate: null
 }
 
 
@@ -113,6 +116,18 @@ export const reducer = (state, action) => {
             return {
                 ...state,
                 display: !state.display
+            }
+        break;
+        case 'SET_START_DATE':
+            return {
+                ...state,
+                startDate: action.value
+            }
+        break;
+        case 'SET_END_DATE':
+            return {
+                ...state,
+                endDate: action.value
             }
         break;
     }

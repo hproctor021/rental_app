@@ -18,6 +18,10 @@ import BannerPic from './components/BannerPic'
 import { useEffect } from 'react'
 import Terms from './components/TermsOService'
 import Privacy from './components/Privacy'
+import 'react-dates/initialize';
+import 'react-dates/lib/css/_datepicker.css';
+import { DateRangePicker, SingleDatePicker, DayPickerRangeController } from 'react-dates';
+
 
 
 

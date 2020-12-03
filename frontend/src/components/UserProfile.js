@@ -7,18 +7,7 @@ const UserProfile = () => {
 
     const dispatch = useDispatch()
     const user = useSelector(state => state.user)
-    // const allUsers = useSelector(state => state.users)
 
-    // useEffect(() => {
-    //     fetch('http://localhost:3000/api/v1/users')
-    //     .then(res => res.json())
-    //     .then(users => {
-    //         dispatch({
-    //             type: 'SET_ALL_USERS',
-    //             users: users
-    //         })
-    //     }
-    // )}, [dispatch])
 
     return(
         <>
