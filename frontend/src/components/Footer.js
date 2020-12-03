@@ -7,6 +7,11 @@ const Footer = () => {
        <footer style={{backgroundColor: "ghostwhite", fixed: 'bottom', padding: '40px'}}>
            <Container>
                 <Row>
+                    <Col className='text-center'>
+                        <Nav.Link href='/contact'>
+                            Contact Us
+                        </Nav.Link>
+                    </Col>
                     <Col>
                         <Nav.Link>
                             <i class="fab fa-facebook-f"></i>
@@ -31,24 +36,24 @@ const Footer = () => {
                     
                 <Container className='pt-3'>
                     <Row   style={{fixed: 'bottom'}}>
-                <Col className='text-center'>
-                        
-                            <Nav.Link href='/contact'>
-                                Contact Us
+
+                        <Col>
+                            <Nav.Link href='/terms'>
+                                Terms of Service
                             </Nav.Link>
-                            </Col>
-                        <Col>
-                        
-                        <Nav.Link href='https://www.linkedin.com/in/haley-proctor/'>
-                            Copyright &copy; Sonder
-                        </Nav.Link>
-                        {/* md={{ span: 6, offset: 6 }} */}
                         </Col>
+
+                        <Col>        
+                            <Nav.Link href='https://www.linkedin.com/in/haley-proctor/'>
+                                Copyright &copy; Sonder
+                            </Nav.Link>
+                        </Col>
+
                         <Col>
-                        <Nav.Link href='/terms'>
-                            Terms of Service
-                        </Nav.Link>
-                </Col>
+                            <Nav.Link href='/privacy'>
+                                Privacy
+                            </Nav.Link>
+                        </Col>
                     </Row>
                 </Container>
             </Container>

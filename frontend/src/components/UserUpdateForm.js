@@ -8,6 +8,7 @@ const UserUpdateForm = () => {
 
     const dispatch = useDispatch()
     const history = useHistory()
+    const user = useSelector(state => state.user)
     const nameInput = useSelector(state => state.nameInput)
     const imageInput = useSelector(state => state.imageInput)
     const emailInput = useSelector(state => state.emailInput)
@@ -50,18 +51,27 @@ const UserUpdateForm = () => {
         })
     }
 
-    const handleClick = () => {
-        dispatch({
-            type: 'SET_USER',
-            user: {
-                name: nameInput,
+    const handleClick = (e) => {
+        e.preventDefault()
+        // e.target.reset()
+        
+        fetch(`http://localhost:3000/api/v1/users/${user.id}/edit`, {
+            method: 'PATCH',
+            headers: {
+                "Content-Type": "application/json",
+                "Accept": "application/json"
+            },
+            body: JSON.stringify({
+                full_name: nameInput,
                 image: imageInput,
                 email: emailInput,
                 username: usernameInput,
                 password: passwordInput
-            }
+            })
         })
-        history.push(`/api/v1/users/:id/profile`)
+        .then(res => res.json())
+        alert("Your account has been successfully updated!") 
+        history.push('/')
     }
 
     return (
@@ -93,11 +103,6 @@ const UserUpdateForm = () => {
                         <Form.Group>
                             {/* <Form.Label>Password</Form.Label> */}
                             <Form.Control type="password" placeholder="Password" onChange={(e) =>handlePasswordChange(e)}/>
-                        </Form.Group>
-
-                        <Form.Group>
-                            {/* <Form.Label>Password</Form.Label> */}
-                            <Form.Control type="password" placeholder="Password Confirmation" onChange={(e) =>handlePasswordChange(e)}/>
                         </Form.Group>
                         <br />
                         <Button variant="primary" type="submit" onClick={handleClick}>

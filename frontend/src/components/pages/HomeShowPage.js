@@ -1,13 +1,15 @@
 import React, { useEffect } from 'react'
 import { Carousel, Image, Col, Row, ListGroup, Container, Button } from 'react-bootstrap'
 import { useDispatch, useSelector } from 'react-redux'
-import Loader from '../Loader'
+import { bindActionCreators } from 'redux'
+import Rezi from '../ReservationCard'
 
 const HomeShowPage = ({ match }) => {
 
     const dispatch = useDispatch()
     const home = useSelector(state => state.home)
-    const { loading } = home
+    const display = useSelector(state => state.display)
+
 
     useEffect(() => {
         fetch(`http://localhost:3000/api/v1/homes/${match.params.id}`)
@@ -21,6 +23,13 @@ const HomeShowPage = ({ match }) => {
         }
     )}, [dispatch, match])
 
+    const handleClick = () => {
+        dispatch({
+            type: 'TOGGLE_DISPLAY',
+            display: display
+        })
+    }
+
     function renderCarousel() {
         return (
             
@@ -33,7 +42,7 @@ const HomeShowPage = ({ match }) => {
                             alt="home photos"
                             />
                             <Carousel.Caption>
-                            <p>{photo.image_name}</p>
+                            <div style={{backgroundColor: 'black', color: 'white', opacity: '55%', position: 'flex', borderRadius: '5px'}}>{photo.image_name}</div>
                             </Carousel.Caption>
                         </Carousel.Item>
                     ))}
@@ -41,6 +50,7 @@ const HomeShowPage = ({ match }) => {
             
         )
     }
+
 
 
     return (
@@ -62,32 +72,35 @@ const HomeShowPage = ({ match }) => {
                     <ListGroup.Item>Bathrooms: {home.bathroom}</ListGroup.Item>
                     <ListGroup.Item>Accommodates: {home.accommodates} guests</ListGroup.Item>
                     {home.pets_allowed
-                    ? <ListGroup.Item>Pet Friendly: yes</ListGroup.Item>
-                    : <ListGroup.Item>Pet Friendly: no</ListGroup.Item>
+                    ? <ListGroup.Item>Pet Friendly : yes</ListGroup.Item>
+                    : <ListGroup.Item>Pet Friendly : no</ListGroup.Item>
                     }
                     {home.internet
-                    ? <ListGroup.Item>Wifi: yes</ListGroup.Item>
-                    : <ListGroup.Item>Wifi: no</ListGroup.Item>
+                    ? <ListGroup.Item>Wifi : yes</ListGroup.Item>
+                    : <ListGroup.Item>Wifi : no</ListGroup.Item>
                     }
                     {home.central_air
-                    ? <ListGroup.Item>A/C: yes</ListGroup.Item>
-                    : <ListGroup.Item>A/C: no</ListGroup.Item>
+                    ? <ListGroup.Item>A/C : yes</ListGroup.Item>
+                    : <ListGroup.Item>A/C : no</ListGroup.Item>
                     }
                     {home.heating
-                    ? <ListGroup.Item>Heating: yes</ListGroup.Item>
-                    : <ListGroup.Item>Heating: no</ListGroup.Item>
+                    ? <ListGroup.Item>Heating : yes</ListGroup.Item>
+                    : <ListGroup.Item>Heating : no</ListGroup.Item>
                     }
                     {home.tv
-                    ? <ListGroup.Item>TV: yes</ListGroup.Item>
-                    : <ListGroup.Item>TV: no</ListGroup.Item>
+                    ? <ListGroup.Item>TV : yes</ListGroup.Item>
+                    : <ListGroup.Item>TV : no</ListGroup.Item>
                     }
                     <ListGroup.Item>${home.daily_price} / night</ListGroup.Item>
                 </ListGroup>
                 <br />
-                <Container className='text-center'>
+                <Container className='text-center' onClick={handleClick}>
                     <Button>Reserve Home</Button>
                 </Container>
             </div>
+            {display
+            ? <Rezi />
+            : null}
         </>
     )
 }

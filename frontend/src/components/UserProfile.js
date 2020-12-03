@@ -1,10 +1,24 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Form, Button, Card, Col, Image, Container, Row } from 'react-bootstrap'
+import { Button, Card, Col, Image, Container, Row } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 const UserProfile = () => {
 
-    const user = useSelector(state=> state.user)
+    const dispatch = useDispatch()
+    const user = useSelector(state => state.user)
+    // const allUsers = useSelector(state => state.users)
+
+    // useEffect(() => {
+    //     fetch('http://localhost:3000/api/v1/users')
+    //     .then(res => res.json())
+    //     .then(users => {
+    //         dispatch({
+    //             type: 'SET_ALL_USERS',
+    //             users: users
+    //         })
+    //     }
+    // )}, [dispatch])
 
     return(
         <>
@@ -15,9 +29,12 @@ const UserProfile = () => {
                             <Card.Body className='text-center'>
                                 <Card.Title>
                                     <Image src="https://cdn.pixabay.com/photo/2017/06/13/12/53/profile-2398782_1280.png" roundedCircle fluid/>
+                                    {/* <Image src={user.image} thumbnail fluid/> */}
                                 </Card.Title>
                                 <Card.Text>
-                                    <Button href='/api/v1/users/edit'>Edit Account</Button>
+                                    <Link to={`/users/edit`}>
+                                        <Button>Edit Account</Button>
+                                    </Link>
                                 </Card.Text>
                                 <Card.Text>
                                     <Button href='/user/list_home'>List a Home</Button>

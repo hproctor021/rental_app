@@ -22,6 +22,13 @@ export default function Header({ match }) {
     //     }
     // )}, [dispatch])
 
+    const handleClick = () => {
+        dispatch({
+            type: 'SET_USER',
+            user: null
+        })
+    }
+
 
     return (
         <header>
@@ -35,7 +42,7 @@ export default function Header({ match }) {
                         <NavDropdown title='Menu' id="basic-nav-dropdown" className='ml-auto'>                        
                             {user
                             ? <>
-                                <NavDropdown.Item><Link to={`/`}>Logout</Link></NavDropdown.Item>
+                                <NavDropdown.Item><Link to={`/`} onClick={handleClick}>Logout</Link></NavDropdown.Item>
                                 <NavDropdown.Item><Link to={`/users/profile`}>My Account</Link></NavDropdown.Item>
                               </>
                             : ( <>

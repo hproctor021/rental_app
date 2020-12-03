@@ -4,6 +4,11 @@ import { Form, Container, Button} from 'react-bootstrap'
 
 const ContactForm = () => {
 
+    const handleClick = () => {
+        alert("Your message has been successfully sent!") 
+    }
+
+
     return (
 
         <Container className='text-center' style={{padding: '100px'}}>
@@ -25,7 +30,7 @@ const ContactForm = () => {
                     <Form.Control as='textarea' placeholder='Message Content' />
                 </Form.Group>
                 <br />
-                <Button variant="primary" type="submit" href='/'>
+                <Button variant="primary" type="submit" href='/' onClick={handleClick}>
                     Send
                 </Button>
             </Form>

@@ -1,8 +1,8 @@
-import { Card, Image, Row, Col, Jumbotron, Button } from 'react-bootstrap'
+import { Card } from 'react-bootstrap'
 
 
 
-function Terms ({ home }) {
+function Terms () {
 
 
     return (

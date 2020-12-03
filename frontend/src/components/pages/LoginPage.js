@@ -53,7 +53,7 @@ const Login = () => {
                 type: 'SET_PASSWORD_INPUT',
                 value: ''
             })
-            history.push('/users/profile')
+        history.push('/')
         })
     }
 

@@ -17,6 +17,7 @@ import ContactForm from './components/ContactForm'
 import BannerPic from './components/BannerPic'
 import { useEffect } from 'react'
 import Terms from './components/TermsOService'
+import Privacy from './components/Privacy'
 
 
 
@@ -47,10 +48,6 @@ const App = () => {
       <Router>
       
         <Header />
-        {/* {<Route exact path ='/' />
-        ? <BannerPic />
-        : null
-        } */}
           <main>
               
                 <Route
@@ -85,7 +82,7 @@ const App = () => {
 
                 <Route
                 exact
-                path='/api/v1/users/:id/edit'
+                path='/users/edit'
                 component={UserUpdateForm}
                 />
 
@@ -105,6 +102,12 @@ const App = () => {
                 exact
                 path='/terms' 
                 component={Terms}
+                />
+
+                <Route
+                exact
+                path='/privacy' 
+                component={Privacy}
                 />
 
             

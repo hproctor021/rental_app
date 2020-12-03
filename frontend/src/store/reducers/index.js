@@ -17,7 +17,8 @@ export const initialState = {
     bathroomInput: 0,
     imageInput: '',
     home: {},
-    loading: true
+    loading: true,
+    display: false
 }
 
 
@@ -65,6 +66,12 @@ export const reducer = (state, action) => {
                 homes: action.homes
             }
         break;
+        case 'SET_ALL_USERS':
+            return {
+                ...state,
+                users: action.users
+            }
+        break;
         case 'SET_DESCRIPTION_INPUT':
             return {
                 ...state,
@@ -100,6 +107,12 @@ export const reducer = (state, action) => {
                 ...state,
                 home: action.home,
                 loading: false
+            }
+        break;
+        case 'TOGGLE_DISPLAY':
+            return {
+                ...state,
+                display: !state.display
             }
         break;
     }
