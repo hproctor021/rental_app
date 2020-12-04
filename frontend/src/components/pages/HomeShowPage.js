@@ -40,7 +40,7 @@ const HomeShowPage = ({ match }) => {
                             className="d-block w-100"
                             src={photo.image}
                             alt="home photos"
-                            />
+                            rounded />
                             <Carousel.Caption>
                             <div style={{backgroundColor: 'black', color: 'white', opacity: '55%', position: 'flex', borderRadius: '5px'}}>{photo.image_name}</div>
                             </Carousel.Caption>

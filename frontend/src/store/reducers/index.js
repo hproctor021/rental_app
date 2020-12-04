@@ -19,9 +19,12 @@ export const initialState = {
     home: {},
     loading: true,
     display: false,
+    doDisplay: true,
+    doTwoDisplay: true,
 
-    startDate: null,
-    endDate: null
+    startDate: new Date(),
+    endDate: new Date(),
+    reservation: {}
 }
 
 
@@ -121,13 +124,31 @@ export const reducer = (state, action) => {
         case 'SET_START_DATE':
             return {
                 ...state,
-                startDate: action.value
+                startDate: action.startDate
             }
         break;
         case 'SET_END_DATE':
             return {
                 ...state,
-                endDate: action.value
+                endDate: action.endDate
+            }
+        break;
+        case 'SET_RESERVATION':
+            return {
+                ...state,
+                reservation: action.reservation
+            }
+        break;
+        case 'CHANGE_DISPLAY':
+            return {
+                ...state,
+                doDisplay: !state.doDisplay
+            }
+        break;
+        case 'CHANGE_TWO_DISPLAY':
+            return {
+                ...state,
+                doTwoDisplay: !state.doTwoDisplay
             }
         break;
     }

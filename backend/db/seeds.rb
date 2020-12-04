@@ -133,9 +133,12 @@ photos = [
 photos.each {| photo | Photo.create(photo)}
 
 
-# reservations = [
-   
-# ]
+reservations = [
+    {user_id: 21, home_id: 16, start_date: "2020-12-01 06:00:00", end_date: "2020-12-09 06:00:00", total_price: 987.54, approved: true},
+    {user_id: 21, home_id: 24, start_date: "2021-01-01 06:00:00", end_date: "2021-01-10 06:00:00", total_price: 765.89, approved: false},
+    {user_id: 21, home_id: 19, start_date: "2021-03-01 06:00:00", end_date: "2021-03-05 06:00:00", total_price: 867.32, approved: false},
+    
+]
 
 # reservations.each {| resi | Reservation.create(resi)}
 

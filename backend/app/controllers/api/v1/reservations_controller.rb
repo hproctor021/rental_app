@@ -1,4 +1,5 @@
 class Api::V1::ReservationsController < ApplicationController
+    skip_before_action :authorized, only: [:create, :index, :show]
 
     def index
         @reservations = Reservation.all
@@ -13,7 +14,7 @@ class Api::V1::ReservationsController < ApplicationController
     private 
     
     def reservation_params
-        params.require(:reservation).permit(:start_date, :end_date)
+        params.require(:reservation).permit(:home_id, :user_id, :start_date, :end_date)
     end 
 
 end

@@ -16,7 +16,7 @@ function HomeCard ({ home }) {
                 </Link>
 
                 <Link to={`/api/v1/homes/${home.id}`}>
-                    <Image src={home.photos[0].image} className='homePhoto' fluid />
+                    <Image src={home.photos[0].image} className='homePhoto' rounded fluid />
                 </Link>
                 <br /><br />
 

@@ -28,15 +28,23 @@ const LandingPage = () =>{
                  <BannerPic />
                 <main className='py-4'>
                     <br /><br />
+                
                     <Container className='home-title'>
                         <h3  style={{textAlign: "center"}}>START PLANNING YOUR NEXT ADVENTURE</h3>
                     </Container>
+                    <hr />
                     <br /><br />
                     <FeaturesCards />
-                    <br /><br />
+                    <br /><br /><br />
+                    <Container className='home-title'>
+                        <h3  style={{textAlign: "center"}}>EXPLORE OUR HOMES</h3>
+                    </Container>
+                    <hr />
+                    <br />
+
                     <Row>
                     {lHomes.map(home => (
-                        <Col key={home._id} sm={14} md={12} lg={10} xl={8} >
+                        <Col key={home._id} sm={14} md={12} lg={11} xl={9} >
                             <HomeCard home={home} />
                         </Col>
                     ))}
