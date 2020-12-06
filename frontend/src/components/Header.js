@@ -39,6 +39,43 @@ export default function Header({ match }) {
                     </LinkContainer>
                     <Navbar.Toggle aria-controls="basic-navbar-nav" />
                     <Navbar.Collapse id="basic-navbar-nav">
+
+                    <NavDropdown title="Search by Location" id="basic-nav-dropdown">
+                        <LinkContainer to='/api/v1/homes/37'>
+                            <NavDropdown.Item>Austin, TX</NavDropdown.Item>
+                        </LinkContainer>
+                        <LinkContainer to='/api/v1/homes/38'>
+                            <NavDropdown.Item>NYC, NY</NavDropdown.Item>
+                        </LinkContainer>
+                        <LinkContainer to='/api/v1/homes/39'>
+                            <NavDropdown.Item >Mexico</NavDropdown.Item>
+                        </LinkContainer>
+                        <LinkContainer to='/api/v1/homes/40'>
+                            <NavDropdown.Item>Moracco</NavDropdown.Item>
+                        </LinkContainer>
+                        <LinkContainer to='/api/v1/homes/41'>
+                            <NavDropdown.Item>Spain</NavDropdown.Item>
+                        </LinkContainer>
+                        <LinkContainer to='/api/v1/homes/42'>
+                            <NavDropdown.Item>Japan</NavDropdown.Item>
+                        </LinkContainer>
+                        <LinkContainer to='/api/v1/homes/43'>
+                            <NavDropdown.Item>Sri Lanka</NavDropdown.Item>
+                        </LinkContainer>
+                        <LinkContainer to='/api/v1/homes/44'>
+                            <NavDropdown.Item>Portugal</NavDropdown.Item>
+                        </LinkContainer>
+                        <LinkContainer to='/api/v1/homes/45'>
+                            <NavDropdown.Item>South Africa</NavDropdown.Item>
+                        </LinkContainer>
+                        <LinkContainer to='/api/v1/homes/46'>
+                            <NavDropdown.Item>New Zealand</NavDropdown.Item>
+                        </LinkContainer>
+                        <LinkContainer to='/api/v1/homes/47'>
+                            <NavDropdown.Item>Malta</NavDropdown.Item>
+                        </LinkContainer>
+                    </NavDropdown>
+
                         <NavDropdown title='Menu' id="basic-nav-dropdown" className='ml-auto'>                        
                             {user
                             ? <>

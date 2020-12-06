@@ -1,11 +1,16 @@
 import React from 'react'
-import { Form, Container, Button} from 'react-bootstrap'
+import { Form, Container, Button, Alert } from 'react-bootstrap'
 
 
 const ContactForm = () => {
 
     const handleClick = () => {
-        alert("Your message has been successfully sent!") 
+        alert("Your message has been successfully sent!")
+        // <Alert variant="success" dismissible>
+        //     <h6>
+        //     Your account has been successfully updated!
+        //     </h6>
+        // </Alert> 
     }
 
 

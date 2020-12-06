@@ -71,7 +71,7 @@ const UserUpdateForm = () => {
         })
         .then(res => res.json())
         alert("Your account has been successfully updated!") 
-        history.push('/')
+        history.push('/users/profile')
     }
 
     return (
